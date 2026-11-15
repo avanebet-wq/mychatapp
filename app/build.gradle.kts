@@ -14,6 +14,9 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "0.1"
+
+        buildConfigField("int", "TG_API_ID", System.getenv("TG_API_ID") ?: "0")
+        buildConfigField("String", "TG_API_HASH", "\"" + (System.getenv("TG_API_HASH") ?: "") + "\"")
     }
 
     compileOptions {
@@ -25,6 +28,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -34,4 +38,5 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.activity:activity-compose:1.9.2")
+    implementation("com.github.fazilus:tdlib-android:1.8.61")
 }
